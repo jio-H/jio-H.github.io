@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>test</title>
+      <link href="/2025/06/18/test/"/>
+      <url>/2025/06/18/test/</url>
+      
+        <content type="html"><![CDATA[<p>进程</p><p>进程是操作系统进行资源分配的基本单位</p><p>目的：为了提供一个隔离的执行环境</p><p>（每个进程创建时，操作系统都会为其分配独立的资源集合，通过进程控制块（PCB）记录所有资源的状态）</p><p>（一个进程宕机不影响其他进程）</p><p>资源：内存、文件描述符表、环境变量、信号处理表等</p><h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>线程是cpu调度的基本单位</p><p>目的：快速奇幻执行流且切换开销尽量小</p><p>（线程通过线程控制块（TCB）记录调度所需要的独立信息）</p><p>（c++中线程崩溃可能导致整个进程终止）</p><p>资源：同一进程内的线程共享进程的资源、每个线程都拥有独立的线程id、程序计数器、寄存器集合、栈空间、这些都是执行流必要的信息</p><p>进程切换的效率要慢于线程切换，因为在同一进程中的线程切换的一些共享资源是不需要切换到，只需要切换一些执行流必要信息</p><p>总之进程是资源的容器，线程是进程内实际执行的实体</p><h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p><img src="attachment:c7472622f7591eef35799eb2280c17ed" alt="截图"></p><p><img src="attachment:8f62bd5062bc8f29e69d4fea4f18ab7c" alt="截图"></p><h4 id="独占资源"><a href="#独占资源" class="headerlink" title="独占资源"></a>独占资源</h4><p>每个进程都拥有独立的资源集合（内存、文件、环境变量、信号处理器等）</p><p>线程之间共享进程的资源类，线程有栈、程序计数器、本地存储等少量独立空间</p><h4 id="切换效率"><a href="#切换效率" class="headerlink" title="切换效率"></a>切换效率</h4><p>线程之间（同一进程）切换效率高 （硬件上下文（寄存器状态）、线程控制块、线程私有栈等的切换）</p><p>进程间的切换效率低 （指不同进程之间的线程进行切换） 除了上述需要切换之外，还需要地址空间切换、TLB快表刷新、信号处理表、文件描述符表等</p><h4 id="健壮性"><a href="#健壮性" class="headerlink" title="健壮性"></a>健壮性</h4><p>一个进程崩溃不会影响其他进程（进程的健壮性高）</p><p>一个线程崩溃可能会导致整个进程崩溃（线程的健壮性低）</p><h4 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h4><p>多进程：  安全、隔离性需求</p><p>多线程：共享数据需求（性能要求更高）</p><h3 id="多进程多线程如何配合使用"><a href="#多进程多线程如何配合使用" class="headerlink" title="多进程多线程如何配合使用"></a>多进程多线程如何配合使用</h3><p>分析整体需求 ，如果有隔离性需求，我们把任务抽象成多进程， 如果有性能需求，我们再针对每个进程再开展多线程，进行性能优化</p><p>MMU进行虚拟内存地址到物理内存地址的转换</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2025/06/18/hello-world/"/>
+      <url>/2025/06/18/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
