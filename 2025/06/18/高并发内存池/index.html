@@ -123,9 +123,9 @@
 
 <ul>
     <li>
-        <div class="all active" data-rel="全部文章">全部文章
+        <div class="all active" data-rel="All">All
             
-                <small>(1)</small>
+                <small>(2)</small>
             
         </div>
     </li>
@@ -137,7 +137,7 @@
         <div data-rel="项目">
             
             项目
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -158,7 +158,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1">
+<input type="hidden" id="yelog_site_posts_number" value="2">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -169,7 +169,7 @@
     <div class="nav-right">
         <div class="friends-area">
     <div class="friends-title">
-        友情链接
+        Links
         <i class="iconfont icon-left"></i>
     </div>
     <div class="friends-content">
@@ -181,20 +181,20 @@
         <div class="title-list">
     <div class="right-top">
         <div id="default-panel">
-            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
-            <div class="right-title">全部文章</div>
-            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+            <i class="iconfont icon-search" data-title="search shortcut key i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="switch to outline view shortcut key w"></i>
         </div>
         <div id="search-panel">
-            <i class="iconfont icon-left" data-title="返回"></i>
+            <i class="iconfont icon-left" data-title="return"></i>
             <input id="local-search-input" autocomplete="off"/>
             <label class="border-line" for="input"></label>
-            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
-            <i class="iconfont icon-tag" data-title="标签"></i>
+            <i class="iconfont icon-case-sensitive" data-title="case sensitive"></i>
+            <i class="iconfont icon-tag" data-title="label"></i>
         </div>
         <div id="outline-panel" style="display: none">
-            <div class="right-title">大纲</div>
-            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+            <div class="right-title">outline</div>
+            <i class="iconfont icon-list" data-title="switch to article list"></i>
         </div>
     </div>
 
@@ -222,8 +222,17 @@
     <nav id="title-list-nav">
         
         
-        <a  class="全部文章 项目 "
+        <a  class="All 项目 "
            href="/2025/06/18/%E9%AB%98%E5%B9%B6%E5%8F%91%E5%86%85%E5%AD%98%E6%B1%A0/"
+           data-tag="c++,操作系统,项目"
+           data-author="" >
+            <span class="post-title" title="高并发内存池">高并发内存池</span>
+            <span class="post-date" title="2025-06-18 21:10:01">2025/06/18</span>
+        </a>
+        
+        
+        <a  class="All 项目 "
+           href="/2025/06/18/mouduo%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"
            data-tag="c++,操作系统,项目"
            data-author="" >
             <span class="post-title" title="高并发内存池">高并发内存池</span>
@@ -240,7 +249,7 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
@@ -279,14 +288,14 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-06-18 21:13:56'>2025-06-18 21:10</time>
+            Created At : <time class="date" title='Updated At: 2025-06-18 21:23:55'>2025-06-18 21:10</time>
         
     </div>
     <div class="article-meta">
         
         
         <span id="busuanzi_container_page_pv">
-            阅读 :<span id="busuanzi_value_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
                 <span class="count-comment">
                     <span class="spinner">
                       <div class="cube1"></div>
@@ -325,7 +334,7 @@
 
 
 <p>
-    <a  class="dashang" onclick="dashangToggle()">赏</a>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
 </p>
 
 
@@ -347,7 +356,7 @@
 
     </div>
     <div class="full-toc">
-        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
     </div>
@@ -357,7 +366,7 @@
 <div class="shang_box">
     <a class="shang_close"  onclick="dashangToggle()">×</a>
     <div class="shang_tit">
-        <p>喜欢就点赞,疼爱就打赏</p>
+        <p>Help us with donation</p>
     </div>
     <div class="shang_payimg">
         <div class="pay_img">
@@ -366,7 +375,7 @@
         </div>
     </div>
     <div class="shang_payselect">
-        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
     </div>
 </div>
 
