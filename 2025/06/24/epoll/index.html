@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>HWH</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="HWH">
+  <title>epoll | HWH</title>
+  <meta name="keywords" content=" 计算机网络 , IO多路复用 , 待整理 ">
+  <meta name="description" content="epoll | HWH">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="项目">
@@ -54,7 +54,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -311,18 +311,68 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-epoll" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2-%F0%9F%91%8B"><span class="toc-text">欢迎来到我的博客 👋</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E6%9C%80%E8%BF%91%E6%9B%B4%E6%96%B0"><span class="toc-text">📚 最近更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB"><span class="toc-text">🧠 博客内容分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%99%8B-%E5%85%B3%E4%BA%8E%E6%88%91"><span class="toc-text">🙋 关于我</span></a></li></ol></li></ol>
+        <h1 class="article-title">epoll</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="笔记">笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color1">计算机网络</a>
+            
+            <a class="color2">IO多路复用</a>
+            
+            <a class="color4">待整理</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-06-25 14:53:38'>2025-06-24 20:19</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#epoll"><span class="toc-text">epoll</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%89%E4%B8%AA%E5%87%BD%E6%95%B0"><span class="toc-text">epoll提供了三个函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#epoll%E7%9A%84%E5%85%AD%E7%A7%8D%E5%81%9A%E6%B3%95"><span class="toc-text">epoll的六种做法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E7%BA%BF%E7%A8%8B"><span class="toc-text">单线程</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -335,34 +385,90 @@
     }
 </style>
 </div>
-            <h1 id="欢迎来到我的博客-👋"><a href="#欢迎来到我的博客-👋" class="headerlink" title="欢迎来到我的博客 👋"></a>欢迎来到我的博客 👋</h1><p>这里是我的个人博客，用于记录技术分享、学习笔记与生活感悟。</p>
-<hr>
-<h2 id="📚-最近更新"><a href="#📚-最近更新" class="headerlink" title="📚 最近更新"></a>📚 最近更新</h2><hr>
-<h2 id="🧠-博客内容分类"><a href="#🧠-博客内容分类" class="headerlink" title="🧠 博客内容分类"></a>🧠 博客内容分类</h2><ul>
-<li>📌 <strong>人工智能</strong>：大模型、微调、推理优化</li>
-<li>🧪 <strong>数据科学</strong>：遥感分析、数据清洗、可视化</li>
-<li>💻 <strong>编程开发</strong>：Java、Python、C++ 工程实战</li>
-<li>✍️ <strong>随笔杂谈</strong>：成长记录、想法分享</li>
-</ul>
-<hr>
-<h2 id="🙋-关于我"><a href="#🙋-关于我" class="headerlink" title="🙋 关于我"></a>🙋 关于我</h2><ul>
-<li>计算机方向学习者 &amp; 实践者</li>
-<li>正在研究大模型在代码生成中的应用</li>
-<li>喜欢开源、热爱折腾</li>
-</ul>
-<p>📫 联系我：<a href="mailto:&#x79;&#111;&#x75;&#x72;&#64;&#x65;&#109;&#x61;&#105;&#108;&#x2e;&#99;&#111;&#x6d;">1463388724@qq.com</a> | <a target="_blank" rel="noopener" href="https://github.com/jio-H">GitHub</a></p>
-<hr>
-<blockquote>
-<p>“记录所学，分享所思。”—— 期待与你一起成长。</p>
-</blockquote>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h1><p>epoll：主要是用来管理网络IO，网络IO可能是指socket fd这类</p>
+<p>为什么要引入这样一个管理</p>
+<p>因为在多个客户端对一个服务端的场景中，服务端通过维护fd来读取客服端发送过来的数据，计算机不能直接receive，因为直接循环读取fd的话很多，可能存在没有数据的情况和非常耗费时间 </p>
+<p>所以系统提供了一个组件来检测哪些fd是可以读的，也就是io多路复用，epoll</p>
+<p>只要是fd和io，不管是网络io还是定时器都可以用epoll </p>
+<p>减少receive成本</p>
+<p>整机和就绪队列</p>
+<h2 id="epoll提供了三个函数"><a href="#epoll提供了三个函数" class="headerlink" title="epoll提供了三个函数"></a>epoll提供了三个函数</h2><p>epoll_create(int )：带一个参数（没有用，以前是指就绪队列的数量，现在用链表就不存在具体数量）</p>
+<p>epoll_ctl()：增加删除和修改（地址）连接</p>
+<p>epoll_wait(): 核心：多长时间检测一次</p>
+<p>fd：代表哪个epoll</p>
+<p>事件：检测什么事件</p>
+<p>事件大小：？</p>
+<p>多长时间检测一次</p>
+<p>水平触发和边缘触发</p>
+<p>水平触发其实就是主要有数据就会通知epoll_wait()，再进行receive</p>
+<p>而边缘触发就是在从没有到有数据触发一次，通知一次，进行receive</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">	<span class="type">int</span> nready = <span class="built_in">epoll_wait</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nready; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(epollin) &#123;</span><br><span class="line">			<span class="type">int</span> ret = <span class="number">0</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> ET</span></span><br><span class="line">            <span class="comment">// 由于是边缘触发，手动写循环将buffer中的数据全部读出，因为在有数据的情况下只触发一次</span></span><br><span class="line">            <span class="keyword">while</span>(ret != <span class="number">-1</span>) &#123;</span><br><span class="line">				ret = <span class="built_in">read</span>(event[i].data.fd, buffer, length, <span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">                <span class="comment">// 而水平触发会一种通知epoll_wait()来读取数据，所以不要手写循环</span></span><br><span class="line">                ret = <span class="built_in">read</span>(event[i].data.fd, buffer, length, <span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+<p>如果buffer传入的是大数据，一次性读完存储在文件里面或者做其他的事情，更适合ET</p>
+<p>如果是小数据，小协议，更适合用水平触发</p>
+<p>都不会产生数据丢失，而且性能相差很小</p>
+<h2 id="epoll的六种做法"><a href="#epoll的六种做法" class="headerlink" title="epoll的六种做法"></a>epoll的六种做法</h2><h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><p>单线程没有竞争，逻辑简单，不需要加速</p>
+<p>有的问题不能解决</p>
+<p>当读完数据后如果再处理一下数据（sql，日志）就会大量消耗时间在处理上</p>
+<p>所以单线程适用于主循环里面没有耗时操作，也就是纯内存的操作</p>
+<p>也存在：<strong>主线程单线程，而处理业务用其他线程来处理（可能出现多个线程处理一个fd）</strong></p>
+<p>网络io多线程做法</p>
+<ol>
+<li><p>可以分级，三级线程，单线程来listen连接，多线程来处理epoll和receive，多线程来处理业务</p>
+</li>
+<li><p>读线程处理accept，多线程处理recv&#x2F;send </p>
+<p>对于多线程而言，监听一个端口，listenfd（fd）选择LT</p>
+<p>每个线程中都存在一个epoll用来监听连接，所以会产生一个问题，当出现连接时，每个线程中的epoll都会被唤醒，造成一个不必要的唤醒</p>
+<ul>
+<li>解法：借助外层循环，保证同一时刻监听的fd只在一个线程中（加锁）</li>
+</ul>
+</li>
+<li><p>多线程epoll_wait(),不区分accept和recv&#x2F;send</p>
+<p>好处在：可以支持多核的硬件</p>
+</li>
+<li><p>多进程做法</p>
+<p>主要用在session独立，前后不关联（是指连接之后只做一次或者两次）</p>
+<p>像http，短链接请求，</p>
+<ul>
+<li><p>多进程epoll_wait(),不区分apccept与recv&#x2F;send，niginx</p>
+</li>
+<li><p>master –&gt;accept, worker（子进程） –&gt;recv&#x2F;send</p>
+<p>不推荐，很难做，没有开源软件这样做</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>不同进程里面的fd是不同的？</p>
+<p>进程a, 里面fd&#x3D;5</p>
+<p>进程b，里面，fd&#x3D;5</p>
+<p>reactor：不要跟多线程和多进程联系</p>
+<p>：简单的对epoll的一层描述，  是为了把网络这一层和业务抽离开来的一个组件，</p>
+<p>reactor封装好的epoll</p>
+<p>：fd,recvbuffer,sendbuffer，我们只需要知道这些，通过reactor来进行</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1463388724@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -371,11 +477,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>面试题</title>
+      <link href="/2025/06/26/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <url>/2025/06/26/%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="主攻的面试题"><a href="#主攻的面试题" class="headerlink" title="主攻的面试题"></a>主攻的面试题</h2><h3 id="TCP相关"><a href="#TCP相关" class="headerlink" title="TCP相关"></a>TCP相关</h3><ul><li><input checked="" disabled="" type="checkbox"> 3次握手和四次挥手</li><li><input disabled="" type="checkbox"> 拥塞控制</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++完美转发</title>
+      <link href="/2025/06/25/C++%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91/"/>
+      <url>/2025/06/25/C++%E5%AE%8C%E7%BE%8E%E8%BD%AC%E5%8F%91/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-完美转发"><a href="#C-完美转发" class="headerlink" title="C++完美转发"></a>C++完美转发</h1><h2 id="基本理解"><a href="#基本理解" class="headerlink" title="基本理解"></a>基本理解</h2><p>参数转发是指c++中将函数参数原封不动的传递给另一个函数的技术（可能中间存在一个转发函数）</p><p>完美转发则是为了在参数传递过程中<strong>避免不必要的拷贝或移动</strong>，从而保持参数的原始类型和属性（左值性和右值性还有其他）</p><ul><li><p><strong>保持参数类型和属性</strong>：函数模板中，有时我们希望传递的参数能够保留其左值或右值的属性。这是因为左值引用和右值引用的行为和性能不同，特别是在设计资源管理（如内存、文件句柄等），直接影响程序的效率和正确性</p><p>C++11之前的参数传递过程中只是避免拷贝，使用引用解决</p><p>C++11引入了一个<strong>移动语义</strong>的概念，所以参数需要区分左值和右值，因为左值和右值会给程序带来不同的处理方式，左值可能就使用拷贝，右值就是用移动</p><p>所以C++11出现了整个问题，参数传递需要避免拷贝和移动</p></li><li><p><strong>避免不必要的拷贝和移动</strong>：如果不能正确的区分参数的左值和右值属性，在函数内部处理这些参数肯会导致不必要的拷贝或者移动操作，这会带来额外的开销和潜在的性能问题。</p></li></ul><h2 id="问题场景"><a href="#问题场景" class="headerlink" title="问题场景"></a>问题场景</h2><h3 id="工厂函数设计模式"><a href="#工厂函数设计模式" class="headerlink" title="工厂函数设计模式"></a>工厂函数设计模式</h3><p>c++中有很多make开头的工厂函数，我们也编写一个工厂函数，去发现问题</p><h3 id="引用折叠"><a href="#引用折叠" class="headerlink" title="引用折叠"></a>引用折叠</h3><p>主要出现在嵌套引用也就是引用的引用，<code>int&amp; &amp;&amp;</code>转换成普通的引用（左值或者右值）</p><p>引用折叠是C++11引入的一个新特性，它指的是当多种引用类型（左值引用或右值引用）组合在一起时，通过一组规则确定最终的引用类型</p><ul><li>如果任何一个引用是左值引用，则结果是左值引用</li><li>否者（即所有引用都是右值引用），则结果为右值引用</li></ul><table><thead><tr><th>make_Person函数（模板函数参数）</th><th>T类型（传递参数类型）</th><th>最终类型</th></tr></thead><tbody><tr><td>T&amp;</td><td>T&amp;</td><td>T&amp;</td></tr><tr><td>T&amp;</td><td>T&amp;&amp;</td><td>T&amp;</td></tr><tr><td>T&amp;&amp;</td><td>T&amp;</td><td>T&amp;</td></tr><tr><td>T&amp;&amp;</td><td>T&amp;&amp;</td><td>T&amp;&amp;</td></tr></tbody></table><h2 id="完美转发"><a href="#完美转发" class="headerlink" title="完美转发"></a>完美转发</h2><p>虽然引用折叠可以自动推导出左值引用和右值引用，但是由于左值对象和右值对象经过赋值，又变成一个左值对象的</p><p>&#x2F;&#x2F; 怎么解决？</p><p>  &#x2F;&#x2F; 所以需要将pram转换成原来的类型，传递到Person构造函数里面(c语言强制转换(T&amp;&amp;), c++ static_cast&lt;T&amp;&amp;&gt;())</p><p>  &#x2F;&#x2F; forward&lt;T&amp;&amp;&gt;()里面其实也是封装一个static_cast函数，实现一下完美转发</p><p>推荐使用forward，因为这可以让人知道这里在实现完美转发</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>epoll</title>
+      <link href="/2025/06/24/epoll/"/>
+      <url>/2025/06/24/epoll/</url>
+      
+        <content type="html"><![CDATA[<h1 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h1><p>epoll：主要是用来管理网络IO，网络IO可能是指socket fd这类</p><p>为什么要引入这样一个管理</p><p>因为在多个客户端对一个服务端的场景中，服务端通过维护fd来读取客服端发送过来的数据，计算机不能直接receive，因为直接循环读取fd的话很多，可能存在没有数据的情况和非常耗费时间 </p><p>所以系统提供了一个组件来检测哪些fd是可以读的，也就是io多路复用，epoll</p><p>只要是fd和io，不管是网络io还是定时器都可以用epoll </p><p>减少receive成本</p><p>整机和就绪队列</p><h2 id="epoll提供了三个函数"><a href="#epoll提供了三个函数" class="headerlink" title="epoll提供了三个函数"></a>epoll提供了三个函数</h2><p>epoll_create(int )：带一个参数（没有用，以前是指就绪队列的数量，现在用链表就不存在具体数量）</p><p>epoll_ctl()：增加删除和修改（地址）连接</p><p>epoll_wait(): 核心：多长时间检测一次</p><p>fd：代表哪个epoll</p><p>事件：检测什么事件</p><p>事件大小：？</p><p>多长时间检测一次</p><p>水平触发和边缘触发</p><p>水平触发其实就是主要有数据就会通知epoll_wait()，再进行receive</p><p>而边缘触发就是在从没有到有数据触发一次，通知一次，进行receive</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line"><span class="type">int</span> nready = <span class="built_in">epoll_wait</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;nready; i++) &#123;</span><br><span class="line"><span class="keyword">if</span>(epollin) &#123;</span><br><span class="line"><span class="type">int</span> ret = <span class="number">0</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">if</span> ET</span></span><br><span class="line">            <span class="comment">// 由于是边缘触发，手动写循环将buffer中的数据全部读出，因为在有数据的情况下只触发一次</span></span><br><span class="line">            <span class="keyword">while</span>(ret != <span class="number">-1</span>) &#123;</span><br><span class="line">ret = <span class="built_in">read</span>(event[i].data.fd, buffer, length, <span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">                <span class="comment">// 而水平触发会一种通知epoll_wait()来读取数据，所以不要手写循环</span></span><br><span class="line">                ret = <span class="built_in">read</span>(event[i].data.fd, buffer, length, <span class="number">0</span>);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果buffer传入的是大数据，一次性读完存储在文件里面或者做其他的事情，更适合ET</p><p>如果是小数据，小协议，更适合用水平触发</p><p>都不会产生数据丢失，而且性能相差很小</p><h2 id="epoll的六种做法"><a href="#epoll的六种做法" class="headerlink" title="epoll的六种做法"></a>epoll的六种做法</h2><h3 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h3><p>单线程没有竞争，逻辑简单，不需要加速</p><p>有的问题不能解决</p><p>当读完数据后如果再处理一下数据（sql，日志）就会大量消耗时间在处理上</p><p>所以单线程适用于主循环里面没有耗时操作，也就是纯内存的操作</p><p>也存在：<strong>主线程单线程，而处理业务用其他线程来处理（可能出现多个线程处理一个fd）</strong></p><p>网络io多线程做法</p><ol><li><p>可以分级，三级线程，单线程来listen连接，多线程来处理epoll和receive，多线程来处理业务</p></li><li><p>读线程处理accept，多线程处理recv&#x2F;send </p><p>对于多线程而言，监听一个端口，listenfd（fd）选择LT</p><p>每个线程中都存在一个epoll用来监听连接，所以会产生一个问题，当出现连接时，每个线程中的epoll都会被唤醒，造成一个不必要的唤醒</p><ul><li>解法：借助外层循环，保证同一时刻监听的fd只在一个线程中（加锁）</li></ul></li><li><p>多线程epoll_wait(),不区分accept和recv&#x2F;send</p><p>好处在：可以支持多核的硬件</p></li><li><p>多进程做法</p><p>主要用在session独立，前后不关联（是指连接之后只做一次或者两次）</p><p>像http，短链接请求，</p><ul><li><p>多进程epoll_wait(),不区分apccept与recv&#x2F;send，niginx</p></li><li><p>master –&gt;accept, worker（子进程） –&gt;recv&#x2F;send</p><p>不推荐，很难做，没有开源软件这样做</p></li></ul></li></ol><p>不同进程里面的fd是不同的？</p><p>进程a, 里面fd&#x3D;5</p><p>进程b，里面，fd&#x3D;5</p><p>reactor：不要跟多线程和多进程联系</p><p>：简单的对epoll的一层描述，  是为了把网络这一层和业务抽离开来的一个组件，</p><p>reactor封装好的epoll</p><p>：fd,recvbuffer,sendbuffer，我们只需要知道这些，通过reactor来进行</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> IO多路复用 </tag>
+            
+            <tag> 待整理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mouduo项目笔记</title>
       <link href="/2025/06/19/mouduo%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"/>
       <url>/2025/06/19/mouduo%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</url>
