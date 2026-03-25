@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>HWH</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="HWH">
+  <title>thread用法 | HWH</title>
+  <meta name="keywords" content=" C++ ">
+  <meta name="description" content="thread用法 | HWH">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta property="og:type" content="website">
 <meta property="og:title" content="项目">
@@ -54,7 +54,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -409,18 +409,64 @@
 
     </div>
     <div class="hide-list">
-        <div class="semicircle" data-title="切换全屏 快捷键 s">
+        <div class="semicircle" data-title="Toggle full screen shortcut key s">
             <div class="brackets first"><</div>
             <div class="brackets">&gt;</div>
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-thread用法" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2-%F0%9F%91%8B"><span class="toc-text">欢迎来到我的博客 👋</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-%E6%9C%80%E8%BF%91%E6%9B%B4%E6%96%B0"><span class="toc-text">📚 最近更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9%E5%88%86%E7%B1%BB"><span class="toc-text">🧠 博客内容分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%99%8B-%E5%85%B3%E4%BA%8E%E6%88%91"><span class="toc-text">🙋 关于我</span></a></li></ol></li></ol>
+        <h1 class="article-title">thread用法</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="笔记">笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color4">C++</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2025-07-04 13:54:43'>2025-07-03 15:28</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#thread%E7%94%A8%E6%B3%95"><span class="toc-text">thread用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#thread%E6%9E%84%E9%80%A0"><span class="toc-text">thread构造</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#thread%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-text">thread成员函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92"><span class="toc-text">参数传递</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -433,34 +479,52 @@
     }
 </style>
 </div>
-            <h1 id="欢迎来到我的博客-👋"><a href="#欢迎来到我的博客-👋" class="headerlink" title="欢迎来到我的博客 👋"></a>欢迎来到我的博客 👋</h1><p>这里是我的个人博客，用于记录技术分享、学习笔记与生活感悟。</p>
-<hr>
-<h2 id="📚-最近更新"><a href="#📚-最近更新" class="headerlink" title="📚 最近更新"></a>📚 最近更新</h2><hr>
-<h2 id="🧠-博客内容分类"><a href="#🧠-博客内容分类" class="headerlink" title="🧠 博客内容分类"></a>🧠 博客内容分类</h2><ul>
-<li>📌 <strong>人工智能</strong>：大模型、微调、推理优化</li>
-<li>🧪 <strong>数据科学</strong>：遥感分析、数据清洗、可视化</li>
-<li>💻 <strong>编程开发</strong>：Java、Python、C++ 工程实战</li>
-<li>✍️ <strong>随笔杂谈</strong>：成长记录、想法分享</li>
-</ul>
-<hr>
-<h2 id="🙋-关于我"><a href="#🙋-关于我" class="headerlink" title="🙋 关于我"></a>🙋 关于我</h2><ul>
-<li>计算机方向学习者 &amp; 实践者</li>
-<li>正在研究大模型在代码生成中的应用</li>
-<li>喜欢开源、热爱折腾</li>
-</ul>
-<p>📫 联系我：<a href="mailto:&#x79;&#x6f;&#117;&#x72;&#64;&#x65;&#109;&#x61;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">1463388724@qq.com</a> | <a target="_blank" rel="noopener" href="https://github.com/jio-H">GitHub</a></p>
-<hr>
-<blockquote>
-<p>“记录所学，分享所思。”—— 期待与你一起成长。</p>
-</blockquote>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="thread用法"><a href="#thread用法" class="headerlink" title="thread用法"></a>thread用法</h1><h2 id="thread构造"><a href="#thread构造" class="headerlink" title="thread构造"></a>thread构造</h2><p>首先对于thread的构造函数参数的认识：</p>
+<p>在thread构造完成后会立即执行函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 普通函数</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(do_work, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 匿名函数</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">([]()&#123;&#125;)</span></span>;</span><br><span class="line">    <span class="comment">// 函数对象</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t6</span><span class="params">(Task(), <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 成员函数</span></span><br><span class="line">    MyTask task;</span><br><span class="line">    <span class="comment">// 普通成员函数后第一个参数必须时对象或者对象指针</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t3</span><span class="params">(&amp;MyTask::task1, task, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t4</span><span class="params">(&amp;MyTask::task1, &amp;task, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 静态成员函数</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t5</span><span class="params">(&amp;MyTask::task2, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+
+
+<h2 id="thread成员函数"><a href="#thread成员函数" class="headerlink" title="thread成员函数"></a>thread成员函数</h2><p>先理解一个概念，当线程一旦创建，会立即执行，代码的执行也就会开另外的路径，现在就纯在于一个问题？</p>
+<p>调用线程（就是创建子线程的线程）需不需要等待子线程完成（可能需要完成的结果）</p>
+<p>通过join()和detach()成员函数，需要根据具体情况进行分析</p>
+<p>线程创建必须调用join或者detach，不然会报错，因为有这样的判断函数joinable()，且在在析构函数中存在 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">std::thread <span class="title">t</span><span class="params">([]()&#123;&#125;)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 阻塞当前线程，等到子线程执行完毕，继续向下执行</span></span><br><span class="line">    t.<span class="built_in">join</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 子线程从当前线程分离，独立运行、调用线程不需要等待</span></span><br><span class="line">    <span class="comment">// t.detach()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获得线程编号</span></span><br><span class="line">    std::cout &lt;&lt; t.<span class="built_in">get_id</span>() &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 系统最大并发数（cpu核心数）</span></span><br><span class="line">    std::cout &lt;&lt; t.<span class="built_in">hardware_concurrency</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><p>构建thread对象的时候，经常使用ref来传递参数，为什么要这么写，有什么好处？</p>
+<ol>
+<li>了解thread内部如何处理传递进来的参数</li>
+<li>了解thread不同传递参数的方式的区别</li>
+<li>了解thread可调用对象的参数类型如何写</li>
+</ol>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 1463388724@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -469,11 +533,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="Toggle full screen shortcut key s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

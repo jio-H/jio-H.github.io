@@ -4,11 +4,162 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2025/12/26/Untitled/"/>
+      <url>/2025/12/26/Untitled/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2025/12/25/%E5%8F%82%E8%80%83%E8%AE%BA%E6%96%87/"/>
+      <url>/2025/12/25/%E5%8F%82%E8%80%83%E8%AE%BA%E6%96%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p>TTRD3: Texture Transfer Residual Denoising Dual Diffusion Model for Remote Sensing Image Super-Resolution</p><p><strong>核心机制</strong>：这篇论文<strong>直接继承并改进了 RDDM</strong>。它提出了“双流扩散”（Dual Diffusion），一路负责确定性的残差（几何结构），一路负责纹理生成的噪声。</p><p><strong>为什么适合你</strong>：</p><ul><li><strong>同宗同源</strong>：它明确引用了RDDM，并将其应用在遥感超分上。</li><li><strong>解决痛点</strong>：它设计模块专门解决“结构准确性”和“纹理丰富度”之间的平衡，这正是时空融合中“低分影像提供结构，高分影像提供纹理”的对应问题。</li><li><strong>论文价值</strong>：这是你必须引用的文献，证明RDDM路线在遥感里的有效性。</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2025/12/15/TODO/"/>
+      <url>/2025/12/15/TODO/</url>
+      
+        <content type="html"><![CDATA[<h2 id="12-16"><a href="#12-16" class="headerlink" title="12-16"></a>12-16</h2><ul><li><input checked="" disabled="" type="checkbox"> cuda编程</li><li><input checked="" disabled="" type="checkbox"> 跑模型<ul><li><input checked="" disabled="" type="checkbox"> 优化实验设计</li><li><input disabled="" type="checkbox"> 对比实验</li></ul></li><li><input disabled="" type="checkbox"> </li></ul><p>实验设计：</p><p>主要参数</p><p>dim维度（che）：16，32，<strong>64</strong></p><p>采样步骤（sampling_timesteps）：<strong>3</strong>，5</p><p>权重步骤（weights_num）：<strong>80</strong></p><p>定位图像大小</p><p>image_size &#x3D; (2040, 1720)</p><p>patch_size &#x3D; (136, 344)</p><p>patch_stride &#x3D; (68, 172)</p><p>args1</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0 <span class="built_in">nohup</span> accelerate launch --main_process_port 20677 train.py &gt; ./log/STF_training_args1.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>args2</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=2 <span class="built_in">nohup</span> accelerate launch --main_process_port 20678 train.py &gt; ./log/STF_training_args2.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>args3</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1 <span class="built_in">nohup</span> accelerate launch --main_process_port 20679 train.py &gt; ./log/STF_training_args3.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>args4</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0 <span class="built_in">nohup</span> accelerate launch --main_process_port 2068 train.py &gt; ./log/STF_training_args4.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><h2 id="12-17"><a href="#12-17" class="headerlink" title="12-17"></a>12-17</h2><ul><li><input checked="" disabled="" type="checkbox"> 测试结果</li><li><input checked="" disabled="" type="checkbox"> 询问gemini改进方向</li><li><input disabled="" type="checkbox"> </li></ul><h2 id="12-18"><a href="#12-18" class="headerlink" title="12-18"></a>12-18</h2><ul><li><p><input checked="" disabled="" type="checkbox"> 服务器测试调试</p><ul><li><input disabled="" type="checkbox"> 最好每次迭代进行测试（效率低，或者比较loss再进行测试性能（取平均））</li></ul></li><li><p><input disabled="" type="checkbox"> 改几个gemini推荐的方向出来进行实验</p><ul><li><input disabled="" type="checkbox"> </li></ul></li><li><p><input checked="" disabled="" type="checkbox"> 改进实现测试方案</p><ul><li><input checked="" disabled="" type="checkbox"> 先总结现在测试流程</li><li><input checked="" disabled="" type="checkbox"> 再判断缺点</li><li><input checked="" disabled="" type="checkbox"> 思考改进策略</li></ul></li><li><p><input checked="" disabled="" type="checkbox"> 测试 (失败)</p></li></ul><blockquote><p>选择性提高基础连接权重并降低跳跃连接中低频权重可提高生成质量</p><p><a href="https://zhuanlan.zhihu.com/p/657641285">https://zhuanlan.zhihu.com/p/657641285</a></p></blockquote><p>现在测试流程</p><p>gemini推荐的方向出来进行实验</p><p>args6 adaGN-Zero？（10分钟ai写的不确定是否正确，明天验证一下）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1 <span class="built_in">nohup</span> accelerate launch --main_process_port 20668 train.py &gt; ./log/STF_training_args6.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>下个一个工作的方向</p><p>再训一个通道数是32的 args4</p><p>arg7 16图片大小256</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=0 <span class="built_in">nohup</span> accelerate launch --main_process_port 20668 train.py &gt; ./log/STF_training_args7.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><p>arg8 16图片大小 (136, 344) + NA</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1 <span class="built_in">nohup</span> accelerate launch --main_process_port 2068 train.py &gt; ./log/STF_training_args8.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(136, 344)</span><br><span class="line">(68, 172)</span><br></pre></td></tr></table></figure><h2 id="12-19"><a href="#12-19" class="headerlink" title="12-19"></a>12-19</h2><p>1&#x2F;520000</p><ul><li><input checked="" disabled="" type="checkbox"> 去看一下遥感时空融合的论文有什么新论文</li><li><input checked="" disabled="" type="checkbox"> 继续添加新的方法</li></ul><h2 id="12-20"><a href="#12-20" class="headerlink" title="12-20"></a>12-20</h2><p>测试256的效果</p><p>更换拼接方式</p><p>继续跑一个NA下的256权重</p><p>更换mamba试试</p><p>args9</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1 <span class="built_in">nohup</span> accelerate launch --main_process_port 2068 train.py &gt; ./log/STF_training_args9.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><h2 id="12-21"><a href="#12-21" class="headerlink" title="12-21"></a>12-21</h2><p>拼接逻辑完成</p><p>dw-conv实验跑起来</p><p>检查na-256实验结果（未完成，batch_size好像有影响）</p><h2 id="12-22"><a href="#12-22" class="headerlink" title="12-22"></a>12-22</h2><p>研究test数据集的batch_size是否影响yes</p><p>继续研究dw-conv实验结果x</p><p>开始写论文</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CUDA_VISIBLE_DEVICES=1 <span class="built_in">nohup</span> accelerate launch --main_process_port 2068 train.py &gt; ./log/STF_training_args9.<span class="built_in">log</span> &gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure><h2 id="12-23"><a href="#12-23" class="headerlink" title="12-23"></a>12-23</h2><p>看LGC跑出来的实验结果</p><p>可以作为新方向尝试</p><h3 id="3-多尺度与频域结合：结构与细节的解耦"><a href="#3-多尺度与频域结合：结构与细节的解耦" class="headerlink" title="3. 多尺度与频域结合：结构与细节的解耦"></a>3. 多尺度与频域结合：结构与细节的解耦</h3><p>为了让模型更关注大尺度的结构恢复，一些研究将残差扩散引入到了频域。</p><ul><li><strong>LightenResDiff (2024&#x2F;2025)</strong><ul><li><strong>改进核心：</strong> <strong>小波变换 (Wavelet Domain) + 残差扩散</strong>。</li><li><strong>创新点：</strong> 它将图像分解为高低频。模型主要在<strong>低频分量</strong>上应用残差扩散来重建光照和全局结构（利用 Resfusion 极强的结构保持能力），而在高频分量上使用更轻量的网络。这种方法在低光照增强（Low-light Enhancement）任务中非常高效。</li></ul></li><li><strong>PyDiff (Pyramid Diffusion)</strong><ul><li><strong>改进核心：</strong> 采用金字塔分辨率风格进行反向采样。</li><li><strong>创新点：</strong> 在采样的不同阶段逐步增加分辨率，将残差引导与多尺度特征融合，进一步降低了处理超清图像时的计算开销。</li></ul></li></ul><h2 id="12-24"><a href="#12-24" class="headerlink" title="12-24"></a>12-24</h2><p>跑LGC实验，差了一点</p><p>看看mamba怎么融合</p><h2 id="12-25"><a href="#12-25" class="headerlink" title="12-25"></a>12-25</h2><p>得开始写论文初稿了</p><p>思考下个工作要做什么</p><p>明天少调代码</p><p>SynDiff确定性扩散原理</p><p>python examples&#x2F;ECPW_STFN.py     –dataset CIA     –epochs 500     –batch_size 1     –device 0     –seed 42</p><p>LR_tensor &#x3D; torch.from_numpy(LR_data.astype(np.float32)).unsqueeze(0)</p><p>            LRs_arr.append(</p><p>                _slide(LR_tensor, k&#x3D;slide_size).numpy() &#x2F; float(max_val)</p><p>            )</p><p>            # LRs_arr.append(_slide(torch.from_numpy(LR_data).unsqueeze(0), k&#x3D;slide_size).numpy() &#x2F; max_val)</p><p>            HR_tensor &#x3D; torch.from_numpy(HR_data.astype(np.float32)).unsqueeze(0)</p><p>            HRs_arr.append(</p><p>                _slide(LR_tensor, k&#x3D;slide_size).numpy() &#x2F; float(max_val)</p><p>            )</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>常见面试手撕代码</title>
+      <link href="/2025/07/03/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/"/>
+      <url>/2025/07/03/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E6%89%8B%E6%92%95%E4%BB%A3%E7%A0%81/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> 手撕 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>thread用法</title>
+      <link href="/2025/07/03/thread%E7%94%A8%E6%B3%95/"/>
+      <url>/2025/07/03/thread%E7%94%A8%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="thread用法"><a href="#thread用法" class="headerlink" title="thread用法"></a>thread用法</h1><h2 id="thread构造"><a href="#thread构造" class="headerlink" title="thread构造"></a>thread构造</h2><p>首先对于thread的构造函数参数的认识：</p><p>在thread构造完成后会立即执行函数</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test01</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 普通函数</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t1</span><span class="params">(do_work, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 匿名函数</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t2</span><span class="params">([]()&#123;&#125;)</span></span>;</span><br><span class="line">    <span class="comment">// 函数对象</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t6</span><span class="params">(Task(), <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 成员函数</span></span><br><span class="line">    MyTask task;</span><br><span class="line">    <span class="comment">// 普通成员函数后第一个参数必须时对象或者对象指针</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t3</span><span class="params">(&amp;MyTask::task1, task, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="function">std::thread <span class="title">t4</span><span class="params">(&amp;MyTask::task1, &amp;task, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">    <span class="comment">// 静态成员函数</span></span><br><span class="line">    <span class="function">std::thread <span class="title">t5</span><span class="params">(&amp;MyTask::task2, <span class="number">10</span>, <span class="number">20</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="thread成员函数"><a href="#thread成员函数" class="headerlink" title="thread成员函数"></a>thread成员函数</h2><p>先理解一个概念，当线程一旦创建，会立即执行，代码的执行也就会开另外的路径，现在就纯在于一个问题？</p><p>调用线程（就是创建子线程的线程）需不需要等待子线程完成（可能需要完成的结果）</p><p>通过join()和detach()成员函数，需要根据具体情况进行分析</p><p>线程创建必须调用join或者detach，不然会报错，因为有这样的判断函数joinable()，且在在析构函数中存在 </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">test02</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">std::thread <span class="title">t</span><span class="params">([]()&#123;&#125;)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 阻塞当前线程，等到子线程执行完毕，继续向下执行</span></span><br><span class="line">    t.<span class="built_in">join</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 子线程从当前线程分离，独立运行、调用线程不需要等待</span></span><br><span class="line">    <span class="comment">// t.detach()</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获得线程编号</span></span><br><span class="line">    std::cout &lt;&lt; t.<span class="built_in">get_id</span>() &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 系统最大并发数（cpu核心数）</span></span><br><span class="line">    std::cout &lt;&lt; t.<span class="built_in">hardware_concurrency</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h2><p>构建thread对象的时候，经常使用ref来传递参数，为什么要这么写，有什么好处？</p><ol><li>了解thread内部如何处理传递进来的参数</li><li>了解thread不同传递参数的方式的区别</li><li>了解thread可调用对象的参数类型如何写</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux入门</title>
+      <link href="/2025/07/02/linux%E5%85%A5%E9%97%A8/"/>
+      <url>/2025/07/02/linux%E5%85%A5%E9%97%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+            <tag> linux </tag>
+            
+            <tag> 编程技巧 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>项目八股总结</title>
+      <link href="/2025/06/28/%E9%A1%B9%E7%9B%AE%E5%85%AB%E8%82%A1%E6%80%BB%E7%BB%93/"/>
+      <url>/2025/06/28/%E9%A1%B9%E7%9B%AE%E5%85%AB%E8%82%A1%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="高性并发内存池"><a href="#高性并发内存池" class="headerlink" title="高性并发内存池"></a>高性并发内存池</h1><p>我现在能想到的是：</p><p>测试</p><p>操作系统中的内存分配</p><p>malloc和new的这种关键字</p><p>无锁队列</p><p>锁是什么</p><p>锁有什么用</p><p>互斥锁、自旋锁、原子操作</p><p>为什么这个项目要设计分层结构</p><p>这个项目解决了什么问题</p><h1 id="基于C-11重构muduo网络库"><a href="#基于C-11重构muduo网络库" class="headerlink" title="基于C++11重构muduo网络库"></a>基于C++11重构muduo网络库</h1><p>io多路复用是什么</p><p>为什么要用epoll</p><p>这个项目解决了什么问题</p><p>one loop per thread是什么，有什么用</p><p>为什么要设计这个双缓冲队列异步日志系统</p><p>RAII机制是什么</p><p>智能指针的hi用</p><p>多线程编程的好处</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+            <tag> 操作系统 </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>面试题</title>
       <link href="/2025/06/26/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
       <url>/2025/06/26/%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="主攻的面试题"><a href="#主攻的面试题" class="headerlink" title="主攻的面试题"></a>主攻的面试题</h2><h3 id="TCP相关"><a href="#TCP相关" class="headerlink" title="TCP相关"></a>TCP相关</h3><ul><li><input checked="" disabled="" type="checkbox"> 3次握手和四次挥手</li><li><input disabled="" type="checkbox"> 拥塞控制</li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h3 id="const-和-constexpr的区别"><a href="#const-和-constexpr的区别" class="headerlink" title="const 和 constexpr的区别"></a>const 和 constexpr的区别</h3><p>const修饰的常量可以在运行时计算，但是constexpr在编译器就会计算并确定，适用于常量表达式</p><p>constexpr更高效，计算结果直接嵌入编译后的代码</p><p>因为constexpr必须修饰编译期可以确定的常量</p><p>所以constexpr函数的返回值必须是编译期常量，如果返回值不是常量表达式就不能定义成constexpr</p><p>动态内存分配也不能用constexpr修饰，因为new delete这些操作需要运行时进行</p><p>constexpr只能处理编译期可以确定的表达式，不能依赖于运行时输入</p><h3 id="原子操作内存序问题（atomic-flag做自旋锁时需要考虑）"><a href="#原子操作内存序问题（atomic-flag做自旋锁时需要考虑）" class="headerlink" title="原子操作内存序问题（atomic_flag做自旋锁时需要考虑）"></a>原子操作内存序问题（atomic_flag做自旋锁时需要考虑）</h3>]]></content>
       
       
       <categories>
